@@ -5,6 +5,13 @@ if (typeof window === 'undefined') {
     self.addEventListener("activate", (event) => event.waitUntil(self.clients.claim()));
 
     self.addEventListener("message", (ev) => {
+        if ([
+            "https://quaint-studios.github.io/",
+            "https://www.playreia.com",
+            "https://web.playreia.com"
+        ].includes(ev.origin))
+            return;
+
         if (!ev.data) {
             return;
         } else if (ev.data.type === "deregister") {
