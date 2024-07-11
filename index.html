@@ -108,9 +108,10 @@ body {
 	padding: 4px 6px;
 }
 		</style>
-		<link id='-gd-engine-icon' rel='icon' type='image/png' href='Reia.icon.png' />
-<link rel='apple-touch-icon' href='Reia.apple-touch-icon.png'/>
-<script src="coi-serviceworker.js"></script>
+		<link id='-gd-engine-icon' rel='icon' type='image/png' href='index.icon.png' />
+<link rel='apple-touch-icon' href='index.apple-touch-icon.png'/>
+<link rel='manifest' href='index.manifest.json'>
+
 	</head>
 	<body>
 		<canvas id="canvas">
@@ -134,9 +135,16 @@ body {
 			<div id="status-notice" class="godot" style="display: none;"></div>
 		</div>
 
-		<script src="Reia.js"></script>
 		<script>
-const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"Reia","experimentalVK":false,"fileSizes":{"Reia.pck":221747216,"Reia.wasm":1758196},"focusCanvas":true,"gdextensionLibs":[]};
+if (!window.SharedArrayBuffer) {
+	document.getElementById('status').style.display = 'none';
+	setTimeout(() => document.getElementById('status').style.display = '', 1500);
+}
+</script>
+<script src="coi-serviceworker.min.js"></script>
+<script src="index.js"></script>
+		<script>
+const GODOT_CONFIG = {"args":[],"canvasResizePolicy":2,"executable":"index","experimentalVK":false,"fileSizes":{"index.pck":221747264,"index.wasm":1758196},"focusCanvas":true,"gdextensionLibs":[],"serviceWorker":"index.service.worker.js"};
 const engine = new Engine(GODOT_CONFIG);
 
 (function () {
